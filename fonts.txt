@@ -1,0 +1,6 @@
+SEARCH FOR NERD FONTS
+
+install with yay
+
+mononki Nerd Font
+UbuntuMono Nerd Font

@@ -14,10 +14,11 @@ set encoding=utf-8
 set showmatch
 set termguicolors
 set cursorline
+set guifont=mononoki\ Nerd\ Font:h16
 
 " key maps
 
-nmap <F2> :NERDTreeToggle<CR>
+nmap <F2> :CHADopen<CR>
 
 " PLUGINS
 
@@ -28,14 +29,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+Plug 'tomasiser/vim-code-dark'
+Plug 'Mofiqul/dracula.nvim'
 
 " visual 
 
-"Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tikhomirov/vim-glsl'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " git integration
 
@@ -45,7 +49,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 
 " Functionality
+
 Plug 'scrooloose/nerdtree'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'rust-lang/rust.vim'
 
@@ -61,6 +67,20 @@ colorscheme gruvbox-material
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
+
+if (has("termguicolors"))
+	set termguicolors
+endif
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true }
+}
+EOF
+
+lua require'colorizer'.setup()
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim

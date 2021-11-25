@@ -43,7 +43,7 @@ def workspaces():
             margin_x=0,
             padding_y=8,
             padding_x=5,
-            borderwidth=1,
+            borderwidth=2,
             active=colors['active'],
             inactive=colors['inactive'],
             rounded=False,
@@ -78,20 +78,21 @@ primary_widgets = [
     # current layout
 
     powerline('color2', 'color3'),
-    widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
+    # widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
+    icon(bg="color2", text=' '),
     widget.CurrentLayout(**base(bg='color2'), padding=5),
 
     # volume
 
     powerline('color4', 'color2'),
     icon(bg='color4', text='奔'),
-    widget.Volume(**base(bg='color4')),
+    widget.PulseVolume(**base(bg='color4')),
 
     # date
 
     powerline('color1', 'color4'),
     icon(bg="color1", text=' '), # Icon: nf-mdi-calendar_clock
-    widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %H:%M '),
+    widget.Clock(**base(bg='color1'), format='%H:%M - %d/%m/%Y '),
 
     powerline('dark', 'color1'),
     widget.Systray(background=colors['dark'], padding=5),

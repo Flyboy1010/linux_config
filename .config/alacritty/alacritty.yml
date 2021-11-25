@@ -68,3 +68,7 @@ font:
 window:
   padding:
     x: 2
+
+env:
+  LINES: ""
+  COLUMNS: ""
